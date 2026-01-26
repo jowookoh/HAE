@@ -1,0 +1,26 @@
+name: quickdraw_hypersphere_transformer
+
+dataset:
+  name: quickdraw
+  img_size: 256
+  channels: 1
+  train_dir: quickdraw_dataset/train
+  val_dir: quickdraw_dataset/val
+
+model:
+  encoder: quickdraw
+  decoder: quickdraw_transformer
+  bottleneck: hypersphere
+  latent_dim: 512
+  decoder_kwargs:
+    embed_dim: 384
+    depth: 6
+    num_heads: 8
+    patch_size: 16
+
+training:
+  epochs: 25
+  batch_size: 64
+  lr: 0.0001
+  kl_weight: 0.001
+  visualize_every: 5
